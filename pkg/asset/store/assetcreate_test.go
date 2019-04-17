@@ -21,7 +21,7 @@ const userProvidedAssets = `{
     "ClusterID": "test-cluster-id"
   },
   "*installconfig.clusterName": {
-    "ClusterName": "test-cluster"
+    "ClusterId": "test-cluster"
   },
   "*installconfig.platform": {
     "none": {}

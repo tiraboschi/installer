@@ -278,6 +278,8 @@ func (a *Bootstrap) addStorageFiles(base string, uri string, templateData *boots
 	} else if filename == "motd" {
 		mode = 0644
 		appendToFile = true
+	} else if filename == "dns-vip-prepender" {
+		mode = 0700
 	} else {
 		mode = 0600
 	}

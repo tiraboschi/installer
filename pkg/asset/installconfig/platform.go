@@ -2,6 +2,7 @@ package installconfig
 
 import (
 	"fmt"
+	"github.com/openshift/installer/pkg/types/ovirt"
 	"sort"
 
 	"github.com/pkg/errors"
@@ -14,6 +15,7 @@ import (
 	libvirtconfig "github.com/openshift/installer/pkg/asset/installconfig/libvirt"
 	openstackconfig "github.com/openshift/installer/pkg/asset/installconfig/openstack"
 	vsphereconfig "github.com/openshift/installer/pkg/asset/installconfig/vsphere"
+	ovirtconfig "github.com/openshift/installer/pkg/asset/installconfig/ovirt"
 	"github.com/openshift/installer/pkg/types"
 	"github.com/openshift/installer/pkg/types/aws"
 	"github.com/openshift/installer/pkg/types/azure"
@@ -74,6 +76,11 @@ func (a *platform) Generate(asset.Parents) error {
 		}
 	case vsphere.Name:
 		a.VSphere, err = vsphereconfig.Platform()
+		if err != nil {
+			return err
+		}
+	case ovirt.Name:
+		a.Ovirt, err = ovirtconfig.Platform()
 		if err != nil {
 			return err
 		}
