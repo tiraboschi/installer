@@ -60,7 +60,7 @@ type installStateConf struct {
 		ClusterID string `json:"ClusterID"`
 	} `json:"*installconfig.clusterID"`
 	ICClusterName struct {
-		ClusterName string `json:"ClusterName"`
+		ClusterName string `json:"ClusterId"`
 	} `json:"*installconfig.clusterName"`
 	ICPlatform struct {
 		Libvirt struct {
@@ -120,7 +120,7 @@ func ValidateInstallStateConfig(filePath string, expectedData DataToValidate) {
 		"*installconfig.config.metadata.name not found in "+fileName)
 	AssertStringContains(installState.ICClusterName.ClusterName,
 		expectedData.ClusterName,
-		"*installconfig.clusterName.ClusterName not found in "+fileName)
+		"*installconfig.clusterName.ClusterId not found in "+fileName)
 
 	// OPENSHIFT_INSTALL_PLATFORM is implicitly validated by next checks. If its not Libvirt platform, the Name and URI will not be accessible
 	AssertStringContains(installState.InstallConfig.Config.Platform.Libvirt.URI,

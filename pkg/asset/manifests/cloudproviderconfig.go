@@ -25,6 +25,7 @@ import (
 	libvirttypes "github.com/openshift/installer/pkg/types/libvirt"
 	nonetypes "github.com/openshift/installer/pkg/types/none"
 	openstacktypes "github.com/openshift/installer/pkg/types/openstack"
+	ovirttypes "github.com/openshift/installer/pkg/types/ovirt"
 	vspheretypes "github.com/openshift/installer/pkg/types/vsphere"
 )
 
@@ -146,6 +147,8 @@ func (cpc *CloudProviderConfig) Generate(dependencies asset.Parents) error {
 			return errors.Wrap(err, "could not create cloud provider config")
 		}
 		cm.Data[cloudProviderConfigDataKey] = vsphereConfig
+	case ovirttypes.Name:
+		//todo cloudprovider
 	default:
 		return errors.New("invalid Platform")
 	}
