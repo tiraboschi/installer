@@ -62,6 +62,8 @@ type bootkubeTemplateData struct {
 	PullSecretBase64           string
 	RootCaCert                 string
 	WorkerIgnConfig            string
+	ApiVIP                     string
+	DnsVIP                     string
 }
 
 type openshiftTemplateData struct {

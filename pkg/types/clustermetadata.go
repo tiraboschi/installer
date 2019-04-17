@@ -7,6 +7,7 @@ import (
 	"github.com/openshift/installer/pkg/types/gcp"
 	"github.com/openshift/installer/pkg/types/libvirt"
 	"github.com/openshift/installer/pkg/types/openstack"
+	"github.com/openshift/installer/pkg/types/ovirt"
 )
 
 // ClusterMetadata contains information
@@ -29,6 +30,7 @@ type ClusterPlatformMetadata struct {
 	Azure     *azure.Metadata     `json:"azure,omitempty"`
 	GCP       *gcp.Metadata       `json:"gcp,omitempty"`
 	BareMetal *baremetal.Metadata `json:"baremetal,omitempty"`
+	Ovirt     *ovirt.Metadata	  `json:"ovirt,omitempty"`
 }
 
 // Platform returns a string representation of the platform

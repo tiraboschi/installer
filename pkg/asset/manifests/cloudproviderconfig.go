@@ -1,6 +1,7 @@
 package manifests
 
 import (
+	"github.com/openshift/installer/pkg/types/ovirt"
 	"path/filepath"
 
 	"github.com/ghodss/yaml"
@@ -122,6 +123,8 @@ func (cpc *CloudProviderConfig) Generate(dependencies asset.Parents) error {
 			return errors.Wrap(err, "could not create cloud provider config")
 		}
 		cm.Data[cloudProviderConfigDataKey] = vsphereConfig
+	case ovirt.Name:
+		//todo cloudprovider
 	default:
 		return errors.New("invalid Platform")
 	}

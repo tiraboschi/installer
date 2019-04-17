@@ -3,6 +3,7 @@ package tls
 import (
 	"crypto/x509"
 	"crypto/x509/pkix"
+	"github.com/openshift/installer/pkg/types/ovirt"
 	"net"
 
 	"github.com/openshift/installer/pkg/asset"
@@ -38,7 +39,10 @@ func (a *MCSCertKey) Generate(dependencies asset.Parents) error {
 	hostname := internalAPIAddress(installConfig.Config)
 
 	cfg := &CertCfg{
-		Subject:      pkix.Name{CommonName: hostname},
+		Subject:      pkix.Name{
+			CommonName: hostname,
+		},
+		IPAddresses: []net.IP{net.ParseIP(installConfig.Config.Ovirt.ApiVIP)},
 		ExtKeyUsages: []x509.ExtKeyUsage{x509.ExtKeyUsageServerAuth},
 		Validity:     ValidityTenYears,
 	}
@@ -54,6 +58,9 @@ func (a *MCSCertKey) Generate(dependencies asset.Parents) error {
 		}
 		cfg.IPAddresses = []net.IP{apiVIP}
 		cfg.DNSNames = []string{hostname, apiVIP.String()}
+	case ovirt.Name:
+		cfg.IPAddresses = []net.IP{net.ParseIP(installConfig.Config.Ovirt.ApiVIP)}
+		cfg.DNSNames = []string{hostname, installConfig.Config.Ovirt.ApiVIP}
 	default:
 		cfg.DNSNames = []string{hostname}
 	}

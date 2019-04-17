@@ -189,6 +189,8 @@ func (m *Manifests) generateBootKubeManifests(dependencies asset.Parents) []*ass
 		McsTLSKey:                  base64.StdEncoding.EncodeToString(mcsCertKey.Key()),
 		PullSecretBase64:           base64.StdEncoding.EncodeToString([]byte(installConfig.Config.PullSecret)),
 		RootCaCert:                 string(rootCA.Cert()),
+		ApiIP:                      installConfig.Config.Ovirt.ApiVIP,
+		DnsIP:                      installConfig.Config.Ovirt.DnsVIP,
 	}
 
 	files := []*asset.File{}
