@@ -8,6 +8,7 @@ type Platform struct {
 	Username          string `json:"ovirt_username,omitempty"`
 	Password          string `json:"ovirt_password,omitempty"`
 	Cafile            string `json:"ovirt_cafile,omitempty"`
+	Insecure		  bool   `json:"ovirt_insecure,omitempty"`
 	StorageDomainName string `json:"storage_domain_name,omitempty"`
 	ClusterId         string `json:"cluster_id,omitempty"`
 	TemplateId        string `json:"template_id,omitempty"`
