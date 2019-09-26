@@ -26,7 +26,7 @@ import (
 	"sigs.k8s.io/yaml"
 
 	machinev1 "github.com/openshift/cluster-api/pkg/apis/machine/v1beta1"
-	"sigs.k8s.io/controller-runtime/pkg/runtime/scheme"
+	"sigs.k8s.io/controller-runtime/pkg/scheme"
 )
 
 const GroupName = "ovirtclusterproviderconfig"

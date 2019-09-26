@@ -234,7 +234,7 @@ func (reader *XMLReader) ReadTime(start *xml.StartElement) (time.Time, error) {
 		var t time.Time
 		return t, err
 	}
-
+	
 	return time.Parse(time.RFC3339Nano, str)
 }
 

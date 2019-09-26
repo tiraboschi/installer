@@ -46,8 +46,8 @@ import (
 	libvirttypes "github.com/openshift/installer/pkg/types/libvirt"
 	nonetypes "github.com/openshift/installer/pkg/types/none"
 	openstacktypes "github.com/openshift/installer/pkg/types/openstack"
-	vspheretypes "github.com/openshift/installer/pkg/types/vsphere"
 	ovirttypes "github.com/openshift/installer/pkg/types/ovirt"
+	vspheretypes "github.com/openshift/installer/pkg/types/vsphere"
 )
 
 const (

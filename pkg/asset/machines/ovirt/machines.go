@@ -58,30 +58,13 @@ func Machines(clusterID string, config *types.InstallConfig, pool *types.Machine
 	return machines, nil
 }
 
-func provider(clusterID string, networkInterfaceAddress string, platform *ovirt.Platform, userDataSecret string) *ovirtprovider.OvirtMachineProviderSpec{
+func provider(clusterID string, networkInterfaceAddress string, platform *ovirt.Platform, userDataSecret string) *ovirtprovider.OvirtMachineProviderSpec {
 	return &ovirtprovider.OvirtMachineProviderSpec{
 		TypeMeta: metav1.TypeMeta{
 			APIVersion: "ovirtproviderconfig.k8s.io/v1alpha1",
 			Kind:       "OvirtMachineProviderSpec",
 		},
-		CloudsSecret:   "",
-		Flavor:         "",
-		Image:          "",
-		KeyName:        "",
-		SshUserName:    "",
-		Networks:       nil,
-		UserDataSecret: nil,
-		RootVolume:     ovirtprovider.RootVolume{},
-		Memory:         4096,
-		Cpu:            2,
-		Ignition: ovirtprovider.Ignition{
-			UserDataSecret: userDataSecret,
-		},
-		Disk: ovirtprovider.Disk{
-			Name: "osdisk",
-			ProvisionedSize: 1000000000,
-			StorageDomain: "nfs",
-		},
-		Cluster: "blue",
+		ClusterId:  platform.ClusterId,
+		TemplateId: clusterID,
 	}
 }

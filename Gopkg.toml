@@ -136,3 +136,7 @@ required = [
 [[constraint]]
   name = "github.com/ovirt/cluster-api-provider-ovirt"
   branch = "v1alpha1"
+
+[[constraint]]
+  name = "github.com/ovirt/go-ovirt"
+  branch = "master"
