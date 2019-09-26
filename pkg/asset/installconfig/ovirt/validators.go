@@ -1,7 +1,6 @@
 package ovirt
 
 import (
-	. "github.com/openshift/installer/pkg/terraform/exec/plugins/vendor/github.com/ovirt/go-ovirt"
 	"github.com/openshift/installer/pkg/types/ovirt"
 	"gopkg.in/AlecAivazis/survey.v1"
 )

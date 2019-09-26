@@ -3,7 +3,6 @@ package hcl2shim
 import (
 	"fmt"
 	"math/big"
-	"github.com/pkg/errors"
 	"github.com/hashicorp/hil/ast"
 	"github.com/zclconf/go-cty/cty"
 
