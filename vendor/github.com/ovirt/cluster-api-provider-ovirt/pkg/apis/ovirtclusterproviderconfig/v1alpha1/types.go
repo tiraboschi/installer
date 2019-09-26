@@ -52,28 +52,6 @@ type OvirtMachineProviderSpec struct {
 	UserDataSecret *corev1.SecretReference `json:"userDataSecret,omitempty"`
 
 	RootVolume RootVolume `json:"root_volume,omitempty"`
-	
-	Memory int `json:"memory,omitempty"`
-	Cpu int `json:"cpu,omitempty"`
-	Ignition Ignition `json:"ignition,omitempty"`
-	Disk Disk `json:"disk,omitempty"`
-	Cluster string `json:"cluster"`
-}
-
-type Disk struct {
-	Name string
-	ProvisionedSize int64
-	StorageDomain string
-	Format string
-	// allocation is preallocated/thin
-	Allocation string 
-	
-	
-	
-}
-
-type Ignition struct {
-	UserDataSecret string `json:"userDataSecret,omitempty"`
 }
 
 type NetworkParam struct {
