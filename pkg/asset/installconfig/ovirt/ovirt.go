@@ -3,6 +3,7 @@ package ovirt
 import (
 	"fmt"
 	"github.com/openshift/installer/pkg/types/ovirt"
+	ovirtsdk4 "github.com/ovirt/go-ovirt"
 	"gopkg.in/AlecAivazis/survey.v1"
 	"sort"
 )
@@ -44,7 +45,7 @@ func Platform() (*ovirt.Platform, error) {
 		},
 	}, &p.Password)
 
-	c, err := ovirtsdk.NewConnectionBuilder().
+	c, err := ovirtsdk4.NewConnectionBuilder().
 		URL(p.Url).
 		Username(p.Username).
 		Password(p.Password).
@@ -63,7 +64,8 @@ func Platform() (*ovirt.Platform, error) {
 	var clusterName string
 	var clusterNames []string
 
-	response, err := c.SystemService().ClustersService().List().Send()
+	systemService := c.SystemService()
+	response, err := systemService.ClustersService().List().Send()
 	if err != nil {
 		return nil, err
 	}
@@ -80,37 +82,35 @@ func Platform() (*ovirt.Platform, error) {
 		Help:    "The oVirt cluster under which the VMs will be created.",
 		Options: clusterNames,
 	},
-	&clusterName,
-	func(ans interface{}) error {
-		choice := ans.(string)
-		i := sort.SearchStrings(clusterNames, choice)
-		if i == len(clusterNames) || clusterNames[i] != choice {
-			return fmt.Errorf("invalid cluster %s", choice)
-		}
-		for _, cluster := range clusters.Slice() {
-			if cluster.MustName() == clusterName {
-				p.ClusterId = cluster.MustId()
-				return nil
+		&clusterName,
+		func(ans interface{}) error {
+			choice := ans.(string)
+			i := sort.SearchStrings(clusterNames, choice)
+			if i == len(clusterNames) || clusterNames[i] != choice {
+				return fmt.Errorf("invalid cluster %s", choice)
 			}
-		}
-		return fmt.Errorf("cannot find a cluster id for the cluster name %s", clusterName)
-	})
+			for _, cluster := range clusters.Slice() {
+				if cluster.MustName() == clusterName {
+					p.ClusterId = cluster.MustId()
+					return nil
+				}
+			}
+			return fmt.Errorf("cannot find a cluster id for the cluster name %s", clusterName)
+		})
 
 	var templateName string
 	var templateNames []string
 
-	templateList, err := c.SystemService().TemplatesService().List().Search("cluster=" + clusterName).Send()
+	templateList, err := systemService.TemplatesService().List().Search("cluster=" + clusterName).Send()
 	if err != nil {
 		return nil, err
 	}
 	templates := templateList.MustTemplates()
 
 	err = survey.AskOne(
-		&survey.Select{
-
-		},
+		&survey.Select{},
 		&templateName,
-		func (ans interface{}) error {
+		func(ans interface{}) error {
 			choice := ans.(string)
 			i := sort.SearchStrings(templateNames, choice)
 			if i == len(templateNames) || templateNames[i] != choice {
@@ -124,7 +124,6 @@ func Platform() (*ovirt.Platform, error) {
 			}
 			return fmt.Errorf("could not locate template %s", templateName)
 		})
-
 
 	err = survey.Ask([]*survey.Question{
 		{
@@ -153,4 +152,3 @@ func Platform() (*ovirt.Platform, error) {
 
 	return &p, nil
 }
-

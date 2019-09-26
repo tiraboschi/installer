@@ -39,10 +39,10 @@ func (a *MCSCertKey) Generate(dependencies asset.Parents) error {
 	hostname := internalAPIAddress(installConfig.Config)
 
 	cfg := &CertCfg{
-		Subject:      pkix.Name{
+		Subject: pkix.Name{
 			CommonName: hostname,
 		},
-		IPAddresses: []net.IP{net.ParseIP(installConfig.Config.Ovirt.ApiVIP)},
+		IPAddresses:  []net.IP{net.ParseIP(installConfig.Config.Ovirt.ApiVIP)},
 		ExtKeyUsages: []x509.ExtKeyUsage{x509.ExtKeyUsageServerAuth},
 		Validity:     ValidityTenYears,
 	}

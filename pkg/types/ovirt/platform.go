@@ -8,7 +8,7 @@ type Platform struct {
 	Username          string `json:"ovirt_username,omitempty"`
 	Password          string `json:"ovirt_password,omitempty"`
 	Cafile            string `json:"ovirt_cafile,omitempty"`
-	Insecure		  bool   `json:"ovirt_insecure,omitempty"`
+	Insecure          bool   `json:"ovirt_insecure,omitempty"`
 	StorageDomainName string `json:"storage_domain_name,omitempty"`
 	ClusterId         string `json:"cluster_id,omitempty"`
 	TemplateId        string `json:"template_id,omitempty"`
@@ -22,12 +22,11 @@ type Platform struct {
 
 	// Network
 	// +optional
-	Network         *Network `json:"network,omitempty"`
+	Network *Network `json:"network,omitempty"`
 
 	// ApiVIP is an IP which will be served by bootstrap and then pivoted masters, using keepalived
 	ApiVIP string `json:"api_vip,omitempty"`
 
 	// DnsVIP is the IP of the internal DNS which will be operated by the cluster
 	DnsVIP string `json:"dns_vip,omitempty"`
-
 }
