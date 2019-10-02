@@ -5,17 +5,17 @@ provider "ovirt" {
 }
 
 module "bootstrap" {
-  source             = "./bootstrap"
-  storage_domain_id  = var.storage_domain_id
-  cluster_id         = var.cluster_id
-  template_id        = var.template_id
+  source = "./bootstrap"
+  ovirt_cluster_id   = var.ovirt_cluster_id
+  ovirt_template_id  = var.ovirt_template_id
+  ocp_cluster_name   = var.ocp_cluster_name
   ignition_bootstrap = var.ignition_bootstrap
 }
 
 resource "ovirt_vm" "master0"  {
-  name        = "${var.cluster_name}-master-0"
-  cluster_id  = var.cluster_id
-  template_id = var.template_id
+  name        = "ocp-cluster-${var.ocp_cluster_name}-master-0"
+  cluster_id  = var.ovirt_cluster_id
+  template_id = var.ovirt_template_id
   memory      = "8192"
   cores       = "4"
 
@@ -26,9 +26,9 @@ resource "ovirt_vm" "master0"  {
 }
 
 resource "ovirt_vm" "master1"  {
-  name        = "${var.cluster_name}-master-1"
-  cluster_id  = var.cluster_id
-  template_id = var.template_id
+  name        = "ocp-cluster-${var.ocp_cluster_name}-master-1"
+  cluster_id  = var.ovirt_cluster_id
+  template_id = var.ovirt_template_id
   memory      = "8192"
   cores       = "4"
 
@@ -39,9 +39,9 @@ resource "ovirt_vm" "master1"  {
 }
 
 resource "ovirt_vm" "master2"  {
-  name        = "${var.cluster_name}-master-2"
-  cluster_id  = var.cluster_id
-  template_id = var.template_id
+  name        = "ocp-cluster-${var.ocp_cluster_name}-master-2"
+  cluster_id  = var.ovirt_cluster_id
+  template_id = var.ovirt_template_id
   memory      = "8192"
   cores       = "4"
 

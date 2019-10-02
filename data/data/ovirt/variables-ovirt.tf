@@ -22,15 +22,21 @@ variable "ovirt_password" {
   description = "The plain password of user to access oVirt engine API"
 }
 
-variable "cluster_name" {
+variable "ovirt_cafile" {
   type = string
-  default = "blue"
+  default = ""
+  description = "The CA file of oVirt engine certificates"
+}
+
+variable "ovirt_cluster_id" {
+  type = string
+  default = ""
   description = "The name of cluster"
 }
 
-//variable "cluster_id" {
-//  description = "The ID of cluster"
-//}
+variable "ocp_cluster_name" {
+  description = "The ID of Openshift cluster"
+}
 
 variable "storage_domain_id" {
   type = string
@@ -38,19 +44,13 @@ variable "storage_domain_id" {
   description = "The ID of storage domain"
 }
 
-variable "storage_domain_name" {
-  type = string
-  description = "The name of storage domain"
-  default     = "nfs"
-}
-
-variable "template_name" {
+variable "ovirt_template_name" {
   type = string
   default     = "rhcos"
   description = "The ID of VM template"
 }
 
-variable "template_id" {
+variable "ovirt_template_id" {
   type = string
   default = ""
   description = "The ID of cluster"

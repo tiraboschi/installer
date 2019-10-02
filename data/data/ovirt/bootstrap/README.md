@@ -1,7 +1,6 @@
 # Bootstrap Module
 
 This [Terraform][] [module][] manages [ovirt][] resources only needed during cluster bootstrapping.
-It uses [implicit provider inheritance][implicit-provider-inheritance] to access the [libvirt provider][libvirt-provider].
 
 ## Example
 

@@ -314,11 +314,11 @@ func (t *TerraformVariables) Generate(parents asset.Parents) error {
 			installConfig.Config.Platform.Ovirt.Username,
 			installConfig.Config.Platform.Ovirt.Password,
 			installConfig.Config.Platform.Ovirt.Cafile,
-			installConfig.Config.Platform.Ovirt.StorageDomainName,
+			"",
 			installConfig.Config.Platform.Ovirt.ClusterId,
+			installConfig.Config.ClusterName + installConfig.Config.BaseDomain,
 			installConfig.Config.Platform.Ovirt.TemplateId,
-			"nfs",
-			1)
+		)
 		if err != nil {
 			return errors.Wrapf(err, "failed to get %s Terraform variables", platform)
 		}
