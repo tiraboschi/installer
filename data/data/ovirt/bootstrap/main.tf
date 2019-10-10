@@ -1,5 +1,5 @@
 resource "ovirt_vm" "bootstrap" {
-  name        = "${var.ocp_cluster_name}-bootstrap"
+  name        = "bootstrap.${var.cluster_domain}"
   memory      = "8192"
   cores       = "4"
   cluster_id  = var.ovirt_cluster_id

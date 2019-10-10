@@ -314,9 +314,7 @@ func (t *TerraformVariables) Generate(parents asset.Parents) error {
 			installConfig.Config.Platform.Ovirt.Username,
 			installConfig.Config.Platform.Ovirt.Password,
 			installConfig.Config.Platform.Ovirt.Cafile,
-			"",
 			installConfig.Config.Platform.Ovirt.ClusterId,
-			installConfig.Config.ClusterName + installConfig.Config.BaseDomain,
 			installConfig.Config.Platform.Ovirt.TemplateId,
 		)
 		if err != nil {

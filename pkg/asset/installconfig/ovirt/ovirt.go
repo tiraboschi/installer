@@ -154,6 +154,16 @@ func Platform() (*ovirt.Platform, error) {
 			Validate: survey.ComposeValidators(survey.Required),
 		},
 	}, &p.DnsVIP)
+	err = survey.Ask([]*survey.Question{
+		{
+			Prompt: &survey.Input{
+				Message: "Enter the ingress IP ",
+				Help:    "Make sure the ip is not used by any party",
+				Default: "",
+			},
+			Validate: survey.ComposeValidators(survey.Required),
+		},
+	}, &p.IngressVIP)
 
 	if err != nil {
 		return nil, err

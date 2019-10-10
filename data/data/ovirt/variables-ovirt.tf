@@ -34,16 +34,6 @@ variable "ovirt_cluster_id" {
   description = "The name of cluster"
 }
 
-variable "ocp_cluster_name" {
-  description = "The ID of Openshift cluster"
-}
-
-variable "storage_domain_id" {
-  type = string
-  default = ""
-  description = "The ID of storage domain"
-}
-
 variable "ovirt_template_name" {
   type = string
   default     = "rhcos"

@@ -133,7 +133,8 @@ type Platform struct {
 	// +optional
 	VSphere *vsphere.Platform `json:"vsphere,omitempty"`
 
-	// Ovirt
+	// Ovirt is the configuration used when installing on oVirt.
+	// +optional
 	Ovirt *ovirt.Platform `json:"ovirt,omitempty"`
 }
 

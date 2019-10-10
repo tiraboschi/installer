@@ -29,4 +29,8 @@ type Platform struct {
 
 	// DnsVIP is the IP of the internal DNS which will be operated by the cluster
 	DnsVIP string `json:"dns_vip,omitempty"`
+
+	// ingressIP is an external IP which routes to the default ingress controller.
+	// The IP is a suitable target of a wildcard DNS record used to resolve default route host names.
+	IngressVIP string `json:"ingress_vip,omitempty"`
 }

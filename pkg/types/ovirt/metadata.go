@@ -8,4 +8,5 @@ type Metadata struct {
 	Cafile   string `json:"cafile"`
 	ApiVIP   string `json:"api_vip"`
 	DnsVIP   string `json:"dns_vip"`
+	IngressVIP   string `json:"ingress_vip"`
 }

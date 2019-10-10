@@ -9,7 +9,7 @@ variable "ovirt_cluster_id" {
   description = "The name of cluster"
 }
 
-variable "ocp_cluster_name" {
+variable "cluster_domain" {
   description = "The ID of Openshift cluster"
 }
 

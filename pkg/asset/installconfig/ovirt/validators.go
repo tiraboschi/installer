@@ -37,7 +37,7 @@ func Authenticated(p *ovirt.Platform) survey.Validator {
 				certUrl.Host = surveyUrl.Host
 			}
 
-			logrus.Infof("ovirt cert url %s", certUrl.String())
+			logrus.Debugf("ovirt cert url %s", certUrl.String())
 
 			resp, err := http.Get(certUrl.String())
 			if err != nil || resp.StatusCode != http.StatusOK {

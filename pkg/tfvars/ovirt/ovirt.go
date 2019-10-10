@@ -10,9 +10,7 @@ type config struct {
 	Username          string `json:"ovirt_username,omitempty"`
 	Password          string `json:"ovirt_password,omitempty"`
 	Cafile            string `json:"ovirt_cafile,omitempty"`
-	StorageDomainId   string `json:"ovirt_storage_domain_id,omitempty"`
 	ClusterId         string `json:"ovirt_cluster_id,omitempty"`
-	OcpClusterName    string `json:"ocp_cluster_name,omitempty"`
 	TemplateId        string `json:"ovirt_template_id,omitempty"`
 }
 
@@ -22,9 +20,7 @@ func TFVars(
 	engineUser string,
 	enginePass string,
 	engineCafile string,
-	storageDomainId string,
 	clusterId string,
-	ocpClusterName string,
 	templateId string) ([]byte, error) {
 
 	cfg := config{
@@ -32,9 +28,7 @@ func TFVars(
 		Username:          engineUser,
 		Password:          enginePass,
 		Cafile:            engineCafile,
-		StorageDomainId:   storageDomainId,
 		ClusterId:         clusterId,
-		OcpClusterName:    ocpClusterName,
 		TemplateId:        templateId,
 	}
 
