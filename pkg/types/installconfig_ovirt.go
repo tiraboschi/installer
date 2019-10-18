@@ -1,5 +1,3 @@
-// +build ovirt
-
 package types
 
 import (

@@ -1,5 +1,3 @@
-// +build ovirt
-
 package plugins
 
 import (
@@ -9,8 +7,7 @@ import (
 
 func init() {
 	exec := func() {
-		//defer ovirt.()
-
+	
 		plugin.Serve(&plugin.ServeOpts{
 			ProviderFunc: ovirt.Provider,
 		})
